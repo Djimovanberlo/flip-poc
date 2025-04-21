@@ -1,6 +1,16 @@
 import { useRef } from "react";
 import "./App.css";
 
+const visible = {
+  opacity: 1,
+  pointerEvents: "auto",
+};
+
+const hidden = {
+  opacity: 0,
+  pointerEvents: "none",
+};
+
 const getCenter = (rect) => {
   return {
     x: rect.left + rect.width / 2,
@@ -44,8 +54,8 @@ function App() {
       lastRect: finalRef.getBoundingClientRect(),
     });
 
-    firstRef.style.opacity = 0;
-    finalRef.style.opacity = 1;
+    Object.assign(firstRef.style, hidden);
+    Object.assign(finalRef.style, visible);
 
     finalRef.animate(transforms, options);
   };
@@ -62,17 +72,13 @@ function App() {
     <div className="app">
       <div className="container">
         <div
-          style={{
-            opacity: 1,
-          }}
+          style={visible}
           ref={smallBlueRef}
           onClick={handleClickBlue}
           className="square small-blue"
         />
         <div
-          style={{
-            opacity: 0,
-          }}
+          style={hidden}
           ref={largeRedRef}
           onClick={handleClickRed}
           className="square large-red"
