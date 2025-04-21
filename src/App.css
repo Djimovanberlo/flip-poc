@@ -4,3 +4,26 @@
   height: 100vh;
   width: 100%;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 20rem;
+}
+
+.square {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.square.small-blue {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
+
+.square.large-red {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
